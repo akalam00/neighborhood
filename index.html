@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<title>Neighborhood Map</title>
+	</head>
+
+	<body>
+
+		<div class="list-items">
+
+			<h1>Neighborhood Map</h1>
+
+			<!-- Input uses data-bind textInput to update the value in a js variable and event to call a funciton when the key is released. -->
+			<input type="text" placeholder="Search Locations" data-bind="textInput: filter, event: { keyup: checkSearch}">
+
+			
+
+			<!-- Ul uses data-bind foreach to iterate through an array in js to add the li elements to the DOM-->
+			<ul id="list" data-bind="foreach: listItem">
+
+				<!-- data-bind text adds text to the list from an array and visible toggles the list items display when true/false states change -->
+				<li data-bind="text: title, click: checkMarker, visible: visibleState"></li>
+
+			</ul>
+			
+			<p id="live-feed">  <a href="https://developers.giphy.com/" target="_blank">GIPHY</a></span></p>
+			
+			<!-- data-bind attr is used to set the source of the image element -->
+			<img data-bind="attr: {src: gif}">
+
+		</div>
+
+		<div id="map"></div>
+
+		<script type="text/javascript" src="js/knockout-3.4.2.js"></script>
+		<script src="js/script.js"></script>
+		<script  async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw8lC76_BSC7Io3s83GKfkiRiiUpcAAqo&callback=initMap" onerror="googleError()">
+		</script>
+
+	</body>
+</html>
